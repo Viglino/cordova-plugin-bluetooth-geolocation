@@ -252,7 +252,23 @@ function initExternalGPS(device) {
         position.source = {
             'type': 'external',
             'typeIsGuess': false,
-            'identifier': device.name + " (" + device.id + ")"
+            'identifier': device.name + " (" + device.id + ")",
+            /* Add NMEA frame info */
+            'nmea': {
+                'age': nmea.age,
+                'alt': nmea.alt,
+                'geoidal': nmea.geoidal,
+                'hdop': nmea.hdop,
+                'age': nmea.age,
+                'quality': nmea.quality,
+                'satelites': nmea.satelites,
+                'satsActive': gps.state.satsActive ?  gps.state.satsActive.length||0 : 0,
+                'satsVisible': gps.state.satsVisible ?  gps.state.satsVisible.length||0 : 0,
+                'stationID': nmea.stationID,
+                'type': nmea.type,
+                'valid': nmea.valid,
+            }
+            /* */
         };
 
         Object.keys(callbacks).forEach(function(cbid) {
