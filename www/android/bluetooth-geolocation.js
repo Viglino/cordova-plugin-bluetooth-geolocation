@@ -240,6 +240,7 @@ function initExternalGPS(device) {
                 'altitude': gps.state.alt,
                 'heading': gps.state.heading,
                 // Convert knots to m/s
+                'speed': gps.state.speed && gps.state.speed * 0.514444,
                 'velocity': gps.state.speed && gps.state.speed * 0.514444,
                 
                 // Guess 7.8 meters 95% interval as base accuracy
@@ -252,23 +253,24 @@ function initExternalGPS(device) {
         position.source = {
             'type': 'external',
             'typeIsGuess': false,
-            'identifier': device.name + " (" + device.id + ")",
-            /* Add NMEA frame info */
-            'nmea': {
-                'age': nmea.age,
-                'alt': nmea.alt,
-                'geoidal': nmea.geoidal,
-                'hdop': nmea.hdop,
-                'age': nmea.age,
-                'quality': nmea.quality,
-                'satelites': nmea.satelites,
-                'satsActive': gps.state.satsActive ?  gps.state.satsActive.length||0 : 0,
-                'satsVisible': gps.state.satsVisible ?  gps.state.satsVisible.length||0 : 0,
-                'stationID': nmea.stationID,
-                'type': nmea.type,
-                'valid': nmea.valid,
-            }
-            /* */
+            'identifier': device.name + " (" + device.id + ")"
+        }
+        position.nmea = {
+            'age': nmea.age,
+            'alt': nmea.alt,
+            'geoidal': nmea.geoidal,
+            // 'hdop': nmea.hdop,
+            'pdop': gps.state.pdop,
+            'hdop': gps.state.hdop,
+            'vdop': gps.state.vdop,
+            'age': nmea.age,
+            'quality': nmea.quality,
+            'satellites': nmea.satelites,
+            'satsActive': gps.state.satsActive ?  gps.state.satsActive.length||0 : 0,
+            'satsVisible': gps.state.satsVisible ?  gps.state.satsVisible.length||0 : 0,
+            'stationID': nmea.stationID,
+            'type': nmea.type,
+            'valid': nmea.valid,
         };
 
         Object.keys(callbacks).forEach(function(cbid) {
