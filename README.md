@@ -1,8 +1,8 @@
 # cordova-plugin-bluetooth-geolocation
 
-> This is a fork of [heigeo](https://github.com/heigeo/)/[cordova-plugin-bluetooth-geolocation](https://github.com/heigeo/cordova-plugin-bluetooth-geolocation) to add NMEA sentence information to Position objects returned by `getCurrentPosition()` and `watchPosition()` for Android devices.    
+> This is a fork of [heigeo](https://github.com/heigeo/)/[cordova-plugin-bluetooth-geolocation](https://github.com/heigeo/cordova-plugin-bluetooth-geolocation) to add [NMEA](https://gpsd.gitlab.io/gpsd/NMEA.html) sentence information to Position objects returned by `getCurrentPosition()` and `watchPosition()` for Android devices.    
 > The API remain unchanged.    
-> It will add a `nmea` propertie to the Position object as follow:
+> It will add `nmea` properties (geoidal separation, precisions, number of satellites,...) to the Position object as follow:
 > ```javascript
 >{
 >  "coords": {
