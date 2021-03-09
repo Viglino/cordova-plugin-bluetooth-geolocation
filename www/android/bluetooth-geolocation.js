@@ -72,7 +72,9 @@ geo.setSource.external = function(onSuccess, onError) {
                 setMethods(initExternalGPS(device));
                 onSuccess({
                     'type': 'external',
-                    'identifier': device.name + ' (' + device.id + ')'
+                    'identifier': device.name + ' (' + device.id + ')',
+                    'name': device.name,
+                    'id': device.id
                 });
                 bluetoothSerial.disconnect();
             }, onError);
