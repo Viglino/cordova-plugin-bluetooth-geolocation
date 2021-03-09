@@ -1,5 +1,44 @@
 # cordova-plugin-bluetooth-geolocation
 
+> This is a fork of [heigeo](https://github.com/heigeo/)/[cordova-plugin-bluetooth-geolocation](https://github.com/heigeo/cordova-plugin-bluetooth-geolocation) to add NMEA sentence information to Position objects returned by `getCurrentPosition()` and `watchPosition()` for Android devices.    
+> The API remain unchanged.    
+> It will add a `nmea` propertie to the Position object as follow:
+> ```javascript
+>{
+>  "coords": {
+>    "latitude": 48.819233366666666,
+>    "longitude": 2.4778656,
+>    "accuracy": 4,
+>    "altitude": 43.66,
+>    "heading": null,
+>    "speed": null,
+>    "altitudeAccuracy": null
+>  },
+>  "timestamp": 1615281032000,
+>  "source": {
+>    "type": "external",
+>    "typeIsGuess": false,
+>    "identifier": "Geo5147410501 (5C:DA:D4:9B:92:3C)"
+>  },
+>  "nmea": {
+>    "age": null,
+>    "alt": 43.66,
+>    "geoidal": 47.32,
+>    "pdop": 1.6,
+>    "hdop": 1,
+>    "vdop": 1.3,
+>    "quality": "fix",
+>    "satellites": 16,
+>    "satsActive": 6,
+>    "satsVisible": 8,
+>    "stationID": null,
+>    "type": "GGA",
+>    "valid": true
+>  }
+>}
+> ```
+-----
+
 PhoneGap/Cordova plugin to connect to external bluetooth GPS devices on Android.  Importantly, the plugin does not require the use of Mock Locations (which require developer settings and a third party application).  Instead, the plugin communicates directly with the Bluetooth device via [BluetoothSerial] and then parses the incoming NMEA stream with [GPS.js].
 
 <img alt="Internal GPS Result"
